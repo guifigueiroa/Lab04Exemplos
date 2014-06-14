@@ -1,0 +1,29 @@
+function C = exp4 (P, K, num_rodadas)
+
+C = P;
+
+for i=1:length(C(:,1)) %fazer para todos os blocos de 32 do texto 'plain'
+    L0 = C(i,1:16);
+    R0 = C(i,17:32);
+    
+    for j=1:num_rodadas %fazer para todas as rodadas pedidas
+        L1 = R0;
+        R0str = '';
+        for TEMP = 1:16
+            R0str = strcat(R0concat,num2str(R0(TEMP)));
+        end
+    
+        %R1 já aplicando a fórmula F
+        R1 = xor (L0(1:16), K(1:16));
+    
+        %Preparar para próxima rotação
+        L0 =  L1;
+        R0 = R1;     
+    end
+    
+    C(i,1:16) = L0;
+    C(i,17:32) = R0; 
+end
+
+end
+
