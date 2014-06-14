@@ -6,11 +6,16 @@ function C = exp4 (P, K, num_rodadas)
         L0 = C(bloco,1:8);
         R0 = C(bloco,9:16);
 
-        for j=1:num_rodadas % Para cada rodada
+        for rodada=1:num_rodadas % Para cada rodada
             L1 = R0;
 
             % Formula F
-            R1 = xor (L0(1:8), K(1:8));
+            R0 = expansao(R0);
+            R0 = xor(R0, K); % funcao para obter chave
+            R0 = substituicao(R0);
+            R0 = permutacao(R0, rodada);
+            
+            R1 = xor (L0, R0);
 
             % Inversao para proxima rodada
             L0 =  L1;
