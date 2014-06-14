@@ -9,5 +9,6 @@ last_column = original(:,4);
 last_column =  [last_column(end);last_column(1)];
 
 exp = [first_column original last_column];
+exp = [ exp(1,:) exp(2,:) ];
 
 end
