@@ -12,7 +12,9 @@ function C = exp4 (P, K, num_rodadas)
             % Formula F
             %R0 = expansao(R0);
             R0 = xor(R0, permKey(K, rodada));
-            R0 = substituicao(R0);
+            if ~isequal(R0,zeros(1,8))
+                R0 = substituicao(R0);
+            end
             R0 = permutacao(R0, rodada);
             
             R1 = xor (L0, R0);
